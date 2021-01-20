@@ -1,0 +1,12 @@
+.app-container {
+    height: 100vh;
+    background-image: url(../../public/assets/bugtrackerbg.jpg);
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+}
