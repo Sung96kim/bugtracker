@@ -1,4 +1,4 @@
-import React from "react";
+import React, {Component} from "react";
 import AppContainer from "./AppContainer";
 
 class LoginPage extends Component{

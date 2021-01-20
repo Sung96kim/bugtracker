@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import HomePage from './Containers/HomePage';
+import bugTrackerRouter from "./Router"
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <HomePage />
+    <bugTrackerRouter />
   </React.StrictMode>,
   document.getElementById('root')
 );
