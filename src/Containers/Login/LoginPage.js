@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import Tilt from 'react-tilt';
+import axios from 'axios';
 
 import LoginImage from "./assets/images/img-01.png";
 import "./assets/js/main.js";
@@ -18,8 +19,6 @@ class LoginPage extends Component{
             email: '',
             password: '',
             submitted: false,
-            loginError: false,
-            authError: false
         }
 
         this.handleLogin=this.handleLogin.bind(this);
@@ -35,13 +34,21 @@ class LoginPage extends Component{
     }
     handleLogin = (e) => {
         e.preventDefault();
+        const { email, password } = this.state;
 
         this.setState({submitted: true});
-        // const { email, password } = this.state;
-
-        // if (email && password){
-        //     this.props.login(email, password);
-        // }
+        axios.get({email, password})
+            .then(function (response) {
+                // handle success
+                console.log(response);
+            })
+            .catch(function (error) {
+                // handle error
+                console.log(error);
+            })
+            .then(function () {
+                // always executed
+            });
     }
 
 
