@@ -1,7 +1,7 @@
 import React, {Component} from "react";
-// import $ from 'jquery';
+
 import LoginImage from "./assets/images/img-01.png";
-import "./assets/js/main";
+import "./assets/js/main.js";
 import "./assets/css/main.css";
 import "./assets/css/util.css";
 import "./assets/vendor/animate/animate.css";
@@ -10,6 +10,8 @@ import "./assets/vendor/select2/select2.min.css";
 import "./assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css";
 
 class LoginPage extends Component{
+    
+
     render(){
         return(
             <div>
@@ -17,8 +19,8 @@ class LoginPage extends Component{
                     <div className="container-login100">
                         <div className="wrap-login100">
                             <div className="login100-pic js-tilt" data-tilt>
-                                <img src={LoginImage} alt="IMG" 
-                                />
+                                <img src={LoginImage} alt="IMG" />
+    
                             </div>
 
                                 <form className="login100-form validate-form">
@@ -48,13 +50,16 @@ class LoginPage extends Component{
                                     </div>
 
                                     <div className="text-center p-t-12">
-                                        <a className="txt2" href="src\Containers\ForgotUserAndPass.js">
-                                        Forgot Username/Password?
+                                    <span class="txt1">
+                                        Forgot {" "}
+                                    </span>
+                                        <a className="txt2" href="src\Containers\ForgotUserAndPass">
+                                        Username/Password?
                                     </a>
                                     </div>
 
                                     <div className="text-center p-t-136">
-                                        <a className="txt2" href="src\Containers\CreateAccount.js">
+                                        <a className="txt2" href="src\Containers\CreateAccount">
                                             Create your Account
                                             <i className="fa fa-long-arrow-right m-l-5" aria-hidden="true" />
                                         </a>

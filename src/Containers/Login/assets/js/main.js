@@ -1,6 +1,7 @@
-import jQuery from 'jquery';
+import $ from 'jquery';
+import { StrictMode } from 'react';
 
-(function ($) {
+export default function Validate(){
     
     var input = $('.validate-input .input100');
 
@@ -49,5 +50,4 @@ import jQuery from 'jquery';
         $(thisAlert).removeClass('alert-validate');
     }
     
-
-}(jQuery));
+};
