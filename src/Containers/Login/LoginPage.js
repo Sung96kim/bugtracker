@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import Tilt from 'react-tilt';
 
 import LoginImage from "./assets/images/img-01.png";
 import "./assets/js/main.js";
@@ -19,8 +20,9 @@ class LoginPage extends Component{
                     <div className="container-login100">
                         <div className="wrap-login100">
                             <div className="login100-pic js-tilt" data-tilt>
-                                <img src={LoginImage} alt="IMG" />
-    
+                                <Tilt>
+                                    <img src={LoginImage} alt="IMG" />
+                                </Tilt>                              
                             </div>
 
                                 <form className="login100-form validate-form">
