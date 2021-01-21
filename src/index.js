@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import bugTrackerRouter from "./Router"
+import BugTrackerRouter from "./Router"
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <bugTrackerRouter />
+    <BugTrackerRouter />
   </React.StrictMode>,
   document.getElementById('root')
 );
