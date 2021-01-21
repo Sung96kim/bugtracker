@@ -11,15 +11,48 @@ import "./assets/vendor/select2/select2.min.css";
 import "./assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css";
 
 class LoginPage extends Component{
-    
+    constructor(props){
+        super(props);
+
+        this.state = {
+            email: '',
+            password: '',
+            submitted: false,
+            loginError: false,
+            authError: false
+        }
+
+        this.handleLogin=this.handleLogin.bind(this);
+        this.handleChange=this.handleChange.bind(this);
+    }
+
+    handleChange = (e) => {
+        e.preventDefault();
+
+        const { name, value } = e.target;
+        this.setState({[name]: value});
+
+    }
+    handleLogin = (e) => {
+        e.preventDefault();
+
+        this.setState({submitted: true});
+        // const { email, password } = this.state;
+
+        // if (email && password){
+        //     this.props.login(email, password);
+        // }
+    }
+
 
     render(){
+        const { email, password } = this.state;
         return(
             <div>
                 <div className="limiter">
                     <div className="container-login100">
                         <div className="wrap-login100">
-                            <div className="login100-pic js-tilt" data-tilt>
+                            <div className="login100-pic" >
                                 <Tilt>
                                     <img src={LoginImage} alt="IMG" />
                                 </Tilt>                              
@@ -30,7 +63,15 @@ class LoginPage extends Component{
                                         Welcome!
                                     </span>
                                     <div className="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
-                                        <input className="input100" type="text" name="email" placeholder="Email" />
+                                        <input 
+                                            className="input100" 
+                                            type="email" 
+                                            name="email" 
+                                            placeholder="Email" 
+                                            defaultValue={email}
+                                            onChange={() => this.handleChange}
+                                           
+                                        />
                                         <span className="focus-input100" />
                                         <span className="symbol-input100">
                                             <i className="fa fa-envelope" aria-hidden="true" />
@@ -38,7 +79,14 @@ class LoginPage extends Component{
                                     </div>
 
                                     <div className="wrap-input100 validate-input" data-validate="Password is required">
-                                        <input className="input100" type="password" name="pass" placeholder="Password" />
+                                        <input 
+                                            className="input100" 
+                                            type="password" 
+                                            name="pass" 
+                                            placeholder="Password" 
+                                            defaultValue={password}
+                                            onChange={() => this.handleChange}
+                                        />
                                     <span className="focus-input100" />
                                         <span className="symbol-input100">
                                             <i className="fa fa-lock" aria-hidden="true" />
@@ -46,18 +94,18 @@ class LoginPage extends Component{
                                     </div>
 
                                     <div className="container-login100-form-btn">
-                                        <button className="login100-form-btn">
+                                        <button className="login100-form-btn" onClick={() => this.handleLogin}>
                                             Login
                                         </button>
                                     </div>
 
                                     <div className="text-center p-t-12">
-                                    <span class="txt1">
+                                    <span className="txt1">
                                         Forgot {" "}
                                     </span>
                                         <a className="txt2" href="src\Containers\ForgotUserAndPass">
                                         Username/Password?
-                                    </a>
+                                        </a>
                                     </div>
 
                                     <div className="text-center p-t-136">
