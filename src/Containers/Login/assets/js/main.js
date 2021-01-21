@@ -1,5 +1,4 @@
 import $ from 'jquery';
-import { StrictMode } from 'react';
 
 export default function Validate(){
     
