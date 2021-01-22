@@ -1,20 +1,18 @@
-import { createStore, applyMiddleware } from 'redux';
+import { applyMiddleware, createStore } from 'redux';
+// import { configureStore } from "@reduxjs/toolkit";
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 import rootReducer from './reducers/rootReducer';
-import logger from 'redux-logger';
+import logger from 'redux-logger'; // eslint-disable-line no-unused-vars
 
-const middleware = isDevEnv()
-    ? composeWithDevTools(applyMiddleware(thunk, logger))
-    : applyMiddleware(thunk);
+const middlewares = [];
 
-const configureStore = () => {
-    const store = createStore(
-        rootReducer,
-        middleware
-    );
+if (process.env.NODE_ENV === `development`) {
+  const { logger } = require(`redux-logger`);
 
-    return store;
-};
+  middlewares.push(thunk, logger);
+}
 
-export default configureStore;
+const store = composeWithDevTools(applyMiddleware(...middlewares))(createStore)(rootReducer);
+
+export default store;
