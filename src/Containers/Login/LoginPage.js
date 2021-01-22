@@ -3,6 +3,7 @@ import Tilt from 'react-tilt';
 import axios from 'axios';
 
 import LoginImage from "./assets/images/img-01.png";
+import Loading from "../../Components/Loading.js";
 import "./assets/js/main.js";
 import "./assets/css/main.css";
 import "./assets/css/util.css";
@@ -19,9 +20,10 @@ class LoginPage extends Component{
             email: '',
             password: '',
             submitted: false,
+            loading: false
         }
 
-        this.handleLogin=this.handleLogin.bind(this);
+        this.handleSubmit=this.handleSubmit.bind(this);
         this.handleChange=this.handleChange.bind(this);
     }
 
@@ -32,12 +34,15 @@ class LoginPage extends Component{
         this.setState({[name]: value});
 
     }
-    handleLogin = (e) => {
+    handleSubmit = (e) => {
         e.preventDefault();
         const { email, password } = this.state;
 
-        this.setState({submitted: true});
-        axios.get({email, password})
+        this.setState({
+            submitted: true,
+            loading: true
+        });
+        axios.post({email, password})
             .then(function (response) {
                 // handle success
                 console.log(response);
@@ -52,8 +57,10 @@ class LoginPage extends Component{
     }
 
 
+
     render(){
         const { email, password } = this.state;
+        const { loading } = this.props;
         return(
             <div>
                 <div className="limiter">
@@ -100,8 +107,12 @@ class LoginPage extends Component{
                                         </span>
                                     </div>
 
-                                    <div className="container-login100-form-btn">
-                                        <button className="login100-form-btn" onClick={() => this.handleLogin}>
+                                    <div className="container-login100-form-btn">  
+                                        <button 
+                                            className="login100-form-btn" 
+                                            onClick={() => this.handleSubmit}
+                                        >       
+                                            {loading ? <Loading /> : null}
                                             Login
                                         </button>
                                     </div>
