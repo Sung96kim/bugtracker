@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux'
 import './index.css';
 import BugTrackerRouter from "./Router"
 import reportWebVitals from './reportWebVitals';
@@ -7,7 +8,9 @@ import store from "./store/store";
 
 ReactDOM.render(
   <React.StrictMode>
-    <BugTrackerRouter />
+    <Provider store={store}>
+      <BugTrackerRouter />
+    </Provider >
   </React.StrictMode>,
   document.getElementById('root')
 );
